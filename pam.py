@@ -24,6 +24,8 @@ print("Medoids:", medoids)
 for point, label in zip(X, labels):
     print("Point:", point, "Cluster:", label)
 
+#plot the graph
+
 plt.scatter(X[:, 0], X[:, 1], c=labels, cmap="viridis")
 plt.scatter(medoids[:, 0], medoids[:, 1],
             color="red", marker="*", s=250, label="Medoids")
