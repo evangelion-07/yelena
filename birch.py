@@ -1,5 +1,7 @@
 import matplotlib.pyplot as plt
 from sklearn.cluster import Birch
+from sklearn.metrics import cluster
+from sklearn.metrics import cluster
 
 n = int(input("Enter number of points: "))
 X = []
@@ -16,11 +18,8 @@ labels = model.fit_predict(X)
 for point, label in zip(X, labels):
     print("Point:", point, "Cluster:", label)
 
-# Plot the points in each cluster (label -1 indicates DBSCAN noise).
-for cluster in sorted(set(labels)):
-    points = [point for point, label in zip(X, labels) if label == cluster]
-    plt.scatter([p[0] for p in points], [p[1] for p in points],
-                label="Noise" if cluster == -1 else f"Cluster {cluster}")
+plt.scatter([point[0] for point in X], [point[1] for point in X],
+            c=labels, cmap="viridis", alpha=0.7)
 plt.xlabel("X")
 plt.ylabel("Y")
 plt.title("BIRCH Clustering")
