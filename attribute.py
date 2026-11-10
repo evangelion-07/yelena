@@ -12,4 +12,4 @@ for i in range(n):
 
 print("\nGeneralized Data:")
 for x in sorted(set(map(tuple, data))):
-    print(list(x), "Count:", data.count(x))
+    print(list(x), "Count:", sum(1 for item in data if tuple(item) == x))
